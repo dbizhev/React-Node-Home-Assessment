@@ -40,7 +40,7 @@ We want to ensure you submit a successful solution so here is our assessment gra
 |  | Task / Skill-Check   | Description                                                                         |
 |---|-------------------|-------------------------------------------------------------------------------------|
 | :thumbsup: | Code Complete        | Did you complete the assessment in it's entirety in terms of functionality          |
-| :white_check_mark: | Build Passes | We expect `npm run build` or `yarn build` to pass, this is tied to a github/action. |
+| :white_check_mark: | Build Passes | We expect `npm test` in `local-api` to pass, this is tied to a github/action. |
 | :satellite: | API / Network Comms. | Were networking communications properly configured                                  |
 | :bell: | App State Management | We recommend using React-State / Hooks                                              |
 | :thought_balloon: | Pull-Request         | Open up a proper PR, **_read the submission process below_**                            |
