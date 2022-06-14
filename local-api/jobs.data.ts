@@ -7,8 +7,9 @@ let jobs = null as unknown as IJob[];
 
 export const loadJobs = async () => {
   try {
-    const { data } = await axios.get(API_SERVICE + "/list")
-    jobs = data;
+    const { data }: { data: IJob[] } = await axios.get(API_SERVICE + "/list")
+
+    jobs = data.map((job) => ({ ...job, cover_image: `http://localhost:3050/${job.cover_image}` }));
 
   } catch (error) {
     throw error
