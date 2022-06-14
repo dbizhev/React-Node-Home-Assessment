@@ -8,10 +8,12 @@ import { IJob } from "./utils/types";
 function App() {
   const [jobs, setJobs] = useState<IJob[]>([]);
   const [jobIndex, setJobIndex] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchJobs().then((jobs) => {
       setJobs(jobs);
+      setIsLoading(false);
     });
   }, []);
 
@@ -32,6 +34,8 @@ function App() {
   };
 
   const currentJob = jobs[jobIndex];
+
+  if (isLoading) return <div className="Loading-View">Loading...</div>;
 
   return (
     <div className="App">

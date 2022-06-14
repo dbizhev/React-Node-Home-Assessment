@@ -23,8 +23,6 @@ export default function JobDetails({ job }: JobDetailsProps) {
     fetchOrders();
   }, [job]);
 
-  console.log(jobOrders);
-
   const activeOrders = jobOrders?.filter(({ active }) => active).length;
   const completedOrders = jobOrders?.filter(
     ({ completed }) => completed
