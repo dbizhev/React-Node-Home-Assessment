@@ -1,4 +1,4 @@
-const express = require('express')
+import express from "express";
 
 // This is the API-Service that provides the job/order data
 // Endpoints are as follows
@@ -29,4 +29,4 @@ const createServer = function () {
   return app
 }
 
-module.exports = createServer
+export default createServer;

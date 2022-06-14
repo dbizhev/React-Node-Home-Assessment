@@ -1,12 +1,13 @@
-var assert = require('assert')
-const request = require('supertest')
-const CreateServer = require('../create-server')
+import assert from "assert"
+import { Server } from 'http'
+import request from "supertest"
+import CreateServer from "../create-server"
 
 const PORT = 4111
 const ServerInstance = CreateServer()
 
 describe('Initial Express Testing', function () {
-  let expressListner = null
+  let expressListner = null as unknown as Server
 
   before(function () {
     // runs once before the first test in this block

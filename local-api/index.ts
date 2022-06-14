@@ -1,4 +1,4 @@
-const CreateServer = require('./create-server')
+import CreateServer from './create-server'
 
 const PORT = 3050
 const ServerInstance = CreateServer()
