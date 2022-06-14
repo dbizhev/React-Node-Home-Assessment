@@ -30,7 +30,7 @@
   background-color: #fff;
   border-radius: 16px;
   margin-top: 2em;
-  min-height: 50vh;
+  min-height: 60vh;
   max-height: 500px;
 }
 
@@ -58,6 +58,11 @@
   padding: 0 2rem;
 }
 
+.NoJobs-Text {
+  text-align: center;
+  width: 100%;
+}
+
 .Jobs-Header {
   margin: 0;
 }
@@ -73,6 +78,10 @@ hr {
 
 .Job-Title {
   margin-top: 0.25rem;
+}
+
+.Job-Title.selected {
+  color: #61dafb;
 }
 
 .Job-Detail-Section img {
