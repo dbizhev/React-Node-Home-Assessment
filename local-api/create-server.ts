@@ -1,6 +1,5 @@
 import axios from 'axios';
 import express from "express";
-import { IJob } from './interface/list.interface';
 import { API_SERVICE, jobs } from './jobs.data';
 
 // This is the API-Service that provides the job/order data
@@ -12,6 +11,8 @@ import { API_SERVICE, jobs } from './jobs.data';
 
 const createServer = function () {
   const app = express()
+
+  app.use(express.static("public"))
 
   /*
    * Candidate will finish the implementation of this endpoint
