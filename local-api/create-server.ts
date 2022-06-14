@@ -1,5 +1,6 @@
 import axios from "axios";
 import express from "express";
+import { IOrder } from './interface/list.interface';
 import { API_SERVICE, jobs } from './jobs.data';
 
 // This is the API-Service that provides the job/order data
@@ -44,7 +45,12 @@ const createServer = function () {
         `${API_SERVICE}/orders/${req.params.jobId}`
       );
       if (!data) return res.status(404).json(`No record found`);
-      res.status(200).json(data);
+      const result: IOrder[] = data.map((order: IOrder) => ({
+        job_id: order.job_id,
+        active: order.active,
+        completed: order?.completed || order?.complete
+      }))
+      res.status(200).json(result);
     } catch (error) {
       res.json(error);
     }
