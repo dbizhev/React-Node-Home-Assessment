@@ -47,6 +47,16 @@ const createServer = function () {
     res.send('Currently Not Implemented')
   })
 
+  app.get('/orders/:jobId', async (req, res) => {
+    try {
+      const { data } = await axios.get(`${API_SERVICE}/orders/${req.params.jobId}`);
+      if (!data) return res.status(404).send(`No record found`);
+      res.status(200).json(data)
+    } catch (error) {
+      res.send(error)
+    }
+  })
+
   return app
 }
 
