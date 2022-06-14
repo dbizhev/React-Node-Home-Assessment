@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { fetchJobOrders } from "../utils/helpers";
 import { IJob, IOrder } from "../utils/types";
 
@@ -9,7 +9,7 @@ interface JobDetailsProps {
 export default function JobDetails({ job }: JobDetailsProps) {
   const [jobOrders, setJobOrders] = useState<IOrder[] | null>(null);
 
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     setJobOrders(null);
     try {
       const orders = await fetchJobOrders(job.job_id);
@@ -17,11 +17,11 @@ export default function JobDetails({ job }: JobDetailsProps) {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [job]);
 
   useEffect(() => {
     fetchOrders();
-  }, [job]);
+  }, [fetchOrders]);
 
   const activeOrders = jobOrders?.filter(({ active }) => active).length;
   const completedOrders = jobOrders?.filter(
