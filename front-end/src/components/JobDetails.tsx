@@ -25,8 +25,10 @@ export default function JobDetails({ job }: JobDetailsProps) {
 
   console.log(jobOrders);
 
-  const activeOrders = jobOrders?.filter(({ active }) => active);
-  const completedOrders = jobOrders?.filter(({ completed }) => completed);
+  const activeOrders = jobOrders?.filter(({ active }) => active).length;
+  const completedOrders = jobOrders?.filter(
+    ({ completed }) => completed
+  ).length;
 
   return (
     <div className="Job-Detail-Section">
@@ -36,10 +38,10 @@ export default function JobDetails({ job }: JobDetailsProps) {
         <b>Price:</b> {job.price}
       </p>
       <p>
-        <b>Orders Active:</b> 3
+        <b>Orders Active:</b> {activeOrders}
       </p>
       <p>
-        <b>Orders Completed:</b> 4
+        <b>Orders Completed:</b> {completedOrders}
       </p>
     </div>
   );

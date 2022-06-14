@@ -16,7 +16,10 @@ export default function JobListing({ jobs, currentJob }: JobListingProps) {
       {jobs.map((job) => {
         const isJobSelected = currentJob.job_id === job.job_id;
         return (
-          <p className={`Job-Title ${isJobSelected ? "selected" : ""}`}>
+          <p
+            key={job.job_id}
+            className={`Job-Title ${isJobSelected ? "selected" : ""}`}
+          >
             {job.title}
           </p>
         );

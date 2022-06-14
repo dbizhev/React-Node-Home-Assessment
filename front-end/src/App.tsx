@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     fetchJobs().then((jobs) => {
-      console.log(jobs);
+      setJobs(jobs);
     });
   }, []);
 
@@ -20,7 +20,6 @@ function App() {
       setJobIndex(0);
       return;
     }
-
     setJobIndex((prev) => prev + 1);
   };
 
@@ -29,7 +28,6 @@ function App() {
       setJobIndex(jobs.length - 1);
       return;
     }
-
     setJobIndex((prev) => prev - 1);
   };
 
