@@ -1,7 +1,7 @@
 import axios from "axios";
 import express from "express";
-import { IJob, IOrder } from './interface/list.interface';
-import { API_SERVICE, jobs } from './jobs.data';
+import { IJob } from './interface/list.interface';
+import { jobs } from './jobs.data';
 
 // This is the API-Service that provides the job/order data
 // Endpoints are as follows
