@@ -10,7 +10,6 @@ export default function JobDetails({ job }: JobDetailsProps) {
   const [jobOrders, setJobOrders] = useState<IOrder[] | null>(null);
 
   const fetchOrders = useCallback(async () => {
-    setJobOrders(null);
     try {
       const orders = await fetchJobOrders(job.job_id);
       setJobOrders(orders);
