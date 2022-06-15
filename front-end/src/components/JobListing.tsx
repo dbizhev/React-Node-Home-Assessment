@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom';
 import { useJobContext } from '../context/jobs.context';
-
 
 export default function JobListing() {
   const { jobs, job: currentJob } = useJobContext()
@@ -12,12 +12,12 @@ export default function JobListing() {
       { jobs.map((job) => {
         const isJobSelected = currentJob?.job_id === job.job_id;
         return (
-          <p
+          <Link to={ `/jobs/${job.job_id}` }
             key={ job.job_id }
             className={ `Job-Title ${isJobSelected ? "selected" : ""}` }
           >
             { job.title }
-          </p>
+          </Link>
         );
       }) }
     </div>

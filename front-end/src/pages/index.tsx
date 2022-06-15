@@ -42,7 +42,7 @@ const JobListingPage = () => {
   return (
     <div className="App">
       <div className="App-Body">
-        <header className="App-header">Funnel Rolodex (MiniDash)</header>
+
 
         <div className="App-Card">
           { !!jobs.length && <JobDetails /> }
