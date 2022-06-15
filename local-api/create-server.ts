@@ -1,6 +1,6 @@
 import axios from "axios";
 import express from "express";
-import { IOrder } from './interface/list.interface';
+import { IJob, IOrder } from './interface/list.interface';
 import { API_SERVICE, jobs } from './jobs.data';
 
 // This is the API-Service that provides the job/order data
@@ -20,7 +20,11 @@ const createServer = function () {
    */
   app.get("/list", (req, res) => {
     try {
-      return res.status(200).json(jobs);
+      const result = jobs.map((job) => {
+        const { orders, ...rest } = job;
+        return rest
+      })
+      return res.status(200).json(result);
     } catch (error) {
       res.json(error);
     }
@@ -32,25 +36,20 @@ const createServer = function () {
    */
   app.get("/job/:jobId", async (req, res) => {
     try {
-      const job = jobs.find((job) => job.job_id === +req.params.jobId);
+      const job = jobs.find((job) => job.job_id === +req.params.jobId) as IJob;
       if (!job) return res.status(404).json(`No record found`);
-      return res.status(200).json(job);
+      const { orders, ...rest } = job;
+      return res.status(200).json(rest);
     } catch (error) {
       res.json(error);
     }
   });
   app.get("/orders/:jobId", async (req, res) => {
     try {
-      const { data } = await axios.get(
-        `${API_SERVICE}/orders/${req.params.jobId}`
-      );
-      if (!data) return res.status(404).json(`No record found`);
-      const result: IOrder[] = data.map((order: IOrder) => ({
-        job_id: order.job_id,
-        active: order.active,
-        completed: order?.completed || order?.complete
-      }))
-      res.status(200).json(result);
+      const job = jobs.find((job) => job.job_id === +req.params.jobId) as IJob;
+      if (!job) return res.status(404).json(`No record found`);
+      const { orders } = job
+      res.status(200).json(orders);
     } catch (error) {
       res.json(error);
     }
