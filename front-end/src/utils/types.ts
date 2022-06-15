@@ -10,3 +10,8 @@ export interface IOrder {
   active: boolean;
   completed: boolean;
 }
+
+
+export interface IJobsWithOrders extends IJob {
+orders: IOrder[]
+}
