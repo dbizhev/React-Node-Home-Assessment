@@ -1,44 +1,27 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { fetchJobOrders } from "../utils/helpers";
-import { IJob, IOrder } from "../utils/types";
+import { useJobContext } from '../context/jobs.context';
 
-interface JobDetailsProps {
-  job: IJob;
-}
 
-export default function JobDetails({ job }: JobDetailsProps) {
-  const [jobOrders, setJobOrders] = useState<IOrder[] | null>(null);
 
-  const fetchOrders = useCallback(async () => {
-    try {
-      const orders = await fetchJobOrders(job.job_id);
-      setJobOrders(orders);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [job]);
+export default function JobDetails() {
+  const { job } = useJobContext()
 
-  useEffect(() => {
-    fetchOrders();
-  }, [fetchOrders]);
 
-  const activeOrders = jobOrders?.filter(({ active }) => active).length;
-  const completedOrders = jobOrders?.filter(
-    ({ completed }) => completed
-  ).length;
+  if (!job) return <p>Loading</p>
+  const activeOrders = job.orders.filter(({ active }) => active).length;
+  const completedOrders = job.orders.filter(({ completed }) => completed).length;
 
   return (
     <div className="Job-Detail-Section">
-      <h2>{job.title}</h2>
-      <img src={job.cover_image} alt="job" />
+      <h2>{ job?.title }</h2>
+      <img src={ job?.cover_image } alt="job" />
       <p>
-        <b>Price:</b> {job.price}
+        <b>Price:</b> { job?.price }
       </p>
       <p>
-        <b>Orders Active:</b> {activeOrders}
+        <b>Orders Active:</b> { activeOrders }
       </p>
       <p>
-        <b>Orders Completed:</b> {completedOrders}
+        <b>Orders Completed:</b> { completedOrders }
       </p>
     </div>
   );

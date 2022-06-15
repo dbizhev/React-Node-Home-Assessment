@@ -1,11 +1,12 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { fetchJobOrders, fetchJobs } from '../utils/helpers';
-import { IJob, IOrder, IJobsWithOrders } from "../utils/types";
+import { IJob, IJobsWithOrders } from "../utils/types";
 
 interface JobContextProps {
   jobs: IJob[];
-  orders: IOrder[];
-  getOrders: (jobId: number) => void;
+
+  getJob: (jobId: number) => void;
+  job: IJobsWithOrders | null;
 }
 
 const JobContext = createContext<JobContextProps>({} as JobContextProps);
@@ -14,42 +15,46 @@ export const useJobContext = () => useContext(JobContext);
 
 const JobContextProvider: React.FC<{ children: React.ReactElement }> = ({ children }) => {
   const [jobs, setJobs] = useState<IJob[]>([]);
-  const [orders, setOrders] = useState<IOrder[]>([])
 
-  const getJobsWithOrder = useCallback((jobId: number) => {
-
-    const job = jobs.find((job) => job.job_id === jobId);
-    if (!job) return null
-    console.log({
-      ...job,
-      orders: orders.filter((order) => order.job_id === job?.job_id)
-    });
-
-
-
-  }, [orders, jobs])
+  const [job, setJob] = useState<IJob | null>(null)
 
 
   useEffect(() => {
     (async () => {
       try {
-        const jobs = await fetchJobs();
-        setJobs(jobs)
-        if (jobs.length) {
-          for (const job of jobs) {
-            const order = await fetchJobOrders(job.job_id);
-            setOrders([...orders, ...order])
+        const data = await fetchJobs();
+        if (data.length) {
+          const jobs: IJob[] = []
+          for (const job of data) {
+            const orders = await fetchJobOrders(job.job_id);
+
+            const newJob = {
+              ...job,
+              orders
+            }
+            jobs.push(newJob)
           }
+          setJobs(jobs)
+
         }
       } catch (error) {
         console.log(error);
       }
-    })()
 
-  }, [jobs, orders])
+    })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const getJob = (jobId: number) => {
+    const foundJob = jobs.find((job) => job.job_id === jobId);
+    setJob(foundJob!)
+  }
+
+
+
 
   return (
-    <JobContext.Provider value={ { jobs, orders, getOrders: getJobsWithOrder } }>{ children }</JobContext.Provider>
+    <JobContext.Provider value={ { jobs, getJob, job } }>{ children }</JobContext.Provider>
   )
 };
 
