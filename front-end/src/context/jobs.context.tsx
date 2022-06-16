@@ -18,7 +18,6 @@ const JobContextProvider: React.FC<{ children: React.ReactElement }> = ({ childr
 
   const [job, setJob] = useState<IJob | null>(null)
 
-
   useEffect(() => {
     (async () => {
       try {
@@ -50,13 +49,9 @@ const JobContextProvider: React.FC<{ children: React.ReactElement }> = ({ childr
     setJob(foundJob!)
   }
 
-
-
-
   return (
     <JobContext.Provider value={ { jobs, getJob, job } }>{ children }</JobContext.Provider>
   )
 };
-
 
 export default JobContextProvider;

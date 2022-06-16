@@ -1,10 +1,7 @@
 import { useJobContext } from '../context/jobs.context';
 
-
-
 export default function JobDetails() {
   const { job } = useJobContext()
-
 
   if (!job) return <p>Loading</p>
   const activeOrders = job.orders.filter(({ active }) => active).length;

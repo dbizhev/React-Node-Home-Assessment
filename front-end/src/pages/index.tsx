@@ -33,17 +33,12 @@ const JobListingPage = () => {
     navigate(-1)
   };
 
-  // const currentJob = jobs[jobIndex];
-
   if (!jobs.length) return <div className="Loading-View">Loading...</div>;
   if (!job) return <p>Waiting for job...</p>
-
 
   return (
     <div className="App">
       <div className="App-Body">
-
-
         <div className="App-Card">
           { !!jobs.length && <JobDetails /> }
           <JobListing />

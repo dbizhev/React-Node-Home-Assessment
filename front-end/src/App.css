@@ -1,112 +1,112 @@
 .App-header {
-	background-color: #282c34;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
-	padding: 0.4em 0;
-	font-weight: bold;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 0.4em 0;
+  font-weight: bold;
 }
 
 .App-Body {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	background-color: #efeffa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #efeffa;
 }
 
 .App-Card {
-	display: flex;
-	width: 80%;
-	padding: 1rem 0;
-	margin: 0 auto;
-	border: 1px solid #333;
-	background-color: #fff;
-	border-radius: 16px;
-	margin-top: 2em;
-	min-height: 60vh;
-	max-height: 500px;
+  display: flex;
+  width: 80%;
+  padding: 1rem 0;
+  margin: 0 auto;
+  border: 1px solid #333;
+  background-color: #fff;
+  border-radius: 16px;
+  margin-top: 2em;
+  min-height: 60vh;
+  max-height: 500px;
 }
 
 .App-Footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: #333;
-	color: #fff;
-	padding: 1em 10%;
-	margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 1em 10%;
+  margin-top: auto;
 }
 
 .App-Link {
-	all: unset;
-	text-align: center;
-	font-weight: bold;
-	cursor: pointer;
-	color: #61dafb;
-	margin: 0;
+  all: unset;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  color: #61dafb;
+  margin: 0;
 }
 
 .Jobs-Section {
-	width: 100%;
-	padding: 0 2rem;
+  width: 100%;
+  padding: 0 2rem;
 }
 
 .NoJobs-Text {
-	text-align: center;
-	width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 .Jobs-Header {
-	margin: 0;
+  margin: 0;
 }
 
 .Job-Detail-Section {
-	width: 100%;
-	padding: 0 2rem;
+  width: 100%;
+  padding: 0 2rem;
 }
 
 hr {
-	margin: 0.25rem 0;
+  margin: 0.25rem 0;
 }
 
 .Job-Title {
-	margin-top: 0.25rem;
-	display: block;
-	color: inherit;
-	text-decoration: none;
+  margin-top: 0.25rem;
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 .Job-Title.selected {
-	color: #61dafb;
+  color: #61dafb;
 }
 
 .Job-Detail-Section img {
-	margin: 1rem 0;
-	width: 100%;
-	object-fit: cover;
-	height: 16rem;
+  margin: 1rem 0;
+  width: 100%;
+  object-fit: cover;
+  height: 16rem;
 }
 
 .Loading-View {
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .job-detail-page {
-	width: 100%;
-	max-width: 90%;
-	margin: auto;
-	margin-top: 1rem;
+  width: 100%;
+  max-width: 90%;
+  margin: auto;
+  margin-top: 1rem;
 }
 
 .job-detail-image {
-	width: 100%;
+  width: 100%;
 }
 
 .job-detail-page h1 {
-	margin-block: 2.5rem;
+  margin-block: 2.5rem;
 }

@@ -3,7 +3,6 @@ import { loadJobs } from './jobs.data'
 
 const PORT = 3050
 
-
 const ServerInstance = CreateServer()
 
 ServerInstance.listen(PORT, async () => {

@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import JobListingPage from './pages';
 import JobDetailsPage from './pages/job-details';
 
-
 const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -15,6 +14,5 @@ const AppRouter = () => {
     </BrowserRouter>
   )
 }
-
 
 export default AppRouter;
